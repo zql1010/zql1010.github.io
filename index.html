@@ -159,7 +159,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/12/hello/">Hello World</a>
+      <a class="article-title" href="/2018/07/12/hello/">Android Studio 添加依赖报错</a>
     </h1>
   
 
@@ -172,15 +172,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>有次在添加依赖之后报如下错误：Warning:Conflict with dependency ‘com.google.code.findbugs:jsr305’. Resolved versions for app (3.0.1) and test app (2.0.1) differ. See <a href="http://g.co/androidstudio/app-test-app-conflict" target="_blank" rel="noopener">http://g.co/androidstudio/app-test-app-conflict</a> for details</p>
+<h3 id="原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错"><a href="#原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错" class="headerlink" title="原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错"></a>原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错</h3><h3 id="解决办法：在build-gradle中添加下面代码即可解决"><a href="#解决办法：在build-gradle中添加下面代码即可解决" class="headerlink" title="解决办法：在build.gradle中添加下面代码即可解决"></a>解决办法：在build.gradle中添加下面代码即可解决</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">configurations.all &#123;</span><br><span class="line">    resolutionStrategy.force <span class="string">'com.google.code.findbugs:jsr305:3.0.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
