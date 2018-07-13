@@ -178,7 +178,9 @@
     
     <div class="post-body post-content">
         <p>有次在添加依赖之后报如下错误：Warning:Conflict with dependency ‘com.google.code.findbugs:jsr305’. Resolved versions for app (3.0.1) and test app (2.0.1) differ. See <a href="http://g.co/androidstudio/app-test-app-conflict" target="_blank" rel="noopener">http://g.co/androidstudio/app-test-app-conflict</a> for details</p>
-<h3 id="原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错"><a href="#原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错" class="headerlink" title="原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错"></a>原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错</h3><h3 id="解决办法：在build-gradle中添加下面代码即可解决"><a href="#解决办法：在build-gradle中添加下面代码即可解决" class="headerlink" title="解决办法：在build.gradle中添加下面代码即可解决"></a>解决办法：在build.gradle中添加下面代码即可解决</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">configurations.all &#123;</span><br><span class="line">    resolutionStrategy.force <span class="string">'com.google.code.findbugs:jsr305:3.0.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错</p>
+<p>解决办法：在build.gradle中添加下面代码即可解决</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">configurations.all &#123;</span><br><span class="line">    resolutionStrategy.force <span class="string">'com.google.code.findbugs:jsr305:3.0.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -241,7 +243,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错"><span class="toc-text">原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决办法：在build-gradle中添加下面代码即可解决"><span class="toc-text">解决办法：在build.gradle中添加下面代码即可解决</span></a></li></ol>
+            <p>暂无目录</p>
         
     </div>
 </aside>
