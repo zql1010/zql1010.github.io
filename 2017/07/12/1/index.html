@@ -33,10 +33,12 @@
     <link rel="alternate" href="/atom.xml" title="Zql的博客" type="application/atom+xml">
 
 
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.png">
 
     
 
+
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
 
 
 <link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
@@ -72,7 +74,7 @@
 <![endif]-->
 
 <body>
-    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <header class="main-header"  style="background-image:url(http://p4.so.qhmsg.com/t01201861b1b1ebdcb9.jpg)"  >
     <div class="main-header-box">
         <a class="header-avatar" href="/" title='QL Zhang'>
             <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
@@ -80,7 +82,7 @@
         <div class="branding">
         	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
             
-                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+                <h2> 文藝学生 </h2>
             
     	</div>
     </div>
@@ -103,15 +105,27 @@
                             </li>
                         
                             <li role="presentation" class="text-center">
-                                <a href="/categories/移动端/"><i class="fa "></i>移动端</a>
+                                <a href="/categories/Android/"><i class="fa "></i>Android</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
-                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                                <a href="/categories/Java/"><i class="fa "></i>Java</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/ReactNative/"><i class="fa "></i>React Native</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
                                 <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about/"><i class="fa "></i>About</a>
                             </li>
                         
                     </ul>
@@ -163,6 +177,10 @@
             <i class="fa fa-clock-o"></i>
             <span class="date-meta">2017/07/12</span>
         </span>
+        <span id="busuanzi_container_page_pv">
+            <i class="fa fa-eye"></i>
+            <span id="busuanzi_value_page_pv"></span>
+          </span>
     
 </div>
 
@@ -183,13 +201,14 @@
     <div class="post-footer">
         <div>
             
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+                转载声明：本博客主要用于学习记录，欢迎共同学习交流。转载请注明出处！
             
         </div>
         <div>
             
         </div>
     </div>
+ 
 </article>
 
 <div class="article-nav prev-next-wrap clearfix">
@@ -210,12 +229,21 @@
 
     <div id="comments">
         
-	<!--PC和WAP自适应版-->
-<div id="SOHUCS"></div>
-<script type="text/javascript">
-	(function(){var appid='cyt8KmUC1';var conf='prod_855a68d3b3d91855360a6215672a505a';var width=window.innerWidth||document.documentElement.clientWidth;if(width<960){window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='+appid+'&conf='+conf+'"><\/script>');}else{var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
-	c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});}})();
-</script>	
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id: window.location.pathname,
+        id:'{{page.title}}',
+        owner:"student9128",
+        repo:"student9128.github.io",
+        oauth: {
+          client_id:"",
+          client_secret:""
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
 
     </div>
 
@@ -227,8 +255,10 @@
                 
                     <aside id="article-toc" role="navigation" class="col-md-4">
     <div class="widget">
-        <h3 class="title">文章目录</h3>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错"><span class="toc-text">原因：由于添加的依赖版本是最新的，而代码仓库里边并没有最新的依赖导致报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决办法：在build-gradle中添加下面代码即可解决"><span class="toc-text">解决办法：在build.gradle中添加下面代码即可解决</span></a></li></ol>
+        
     </div>
 </aside>
 
@@ -241,32 +271,33 @@
         <div class="row">
         </div>
     </div>
+    
 </footer>
-
-<!--<a id="toc-btn">
-    <i class="fa fa-bars"></i>
-</a>-->
 
 <a id="back-to-top" class="icon-btn hide">
 	<i class="fa fa-chevron-up"></i>
 </a>
 
-
-
-
     <div class="copyright">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12"> 
-                <span>Copyright &copy; 2017
-                </span> | 
-                <span>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2016-2018 Kevin
+                </span> |
+                <!-- <span>
                     Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> | 
+                </span> | -->
                 <span>
-                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                    Theme by Kevin based on <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
                 </span>
+
+              <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+              第<span id="busuanzi_value_site_uv"></span>位小伙伴你好,
+              <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
             </div>
+
         </div>
     </div>
 </div>
