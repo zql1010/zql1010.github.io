@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Archives: 2018/7 | Zql的博客</title>
+<title>Android EditText输入的一些限制 | Zql的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Zql的博客" type="application/atom+xml">
@@ -37,6 +37,8 @@
 
     
 
+
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
 
 
 <link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
@@ -123,149 +125,129 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <div id="main">
-     <div class="timebox">
-          <div class="timeline">
-              <ul>
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Android EditText输入的一些限制">
+            
+	            Android EditText输入的一些限制
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Android">
+            Android
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
                 
+                    <a href="/tags/EditText" title='EditText'>
+                        EditText
+                    </a>
                 
-                    
-                    
-                        
-                            
-                            <h2>2018</h2>
-                        
-                        
-                          <li class="">
-                        
-                            <h3>
-                              <span>07月</span><span>12日</span>
-                            </h3>
-                            <a href="/2018/07/12/测试/" title="Hello World" target="_blank">Hello World</a>
-                        </li>
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-              </ul>
-          </div>
-    </div>
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2017/06/17</span>
+        </span>
+        <span id="busuanzi_container_page_pv">
+            <i class="fa fa-eye"></i>
+            <span id="busuanzi_value_page_pv"></span>
+          </span>
+    
 </div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>限制输入类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">et_lxnr.setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE);</span><br><span class="line">xml：android:inputType=<span class="string">"number"</span></span><br></pre></td></tr></table></figure>
+<p>限制输入长度</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">et_lxnr.setFilters(new InputFilter[]&#123;new InputFilter.LengthFilter(10)&#125;);</span><br><span class="line">xml：android:maxLength=<span class="string">"10"</span></span><br></pre></td></tr></table></figure>
+<p>限制输入固定的某些字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">et_lxnr.setKeyListener(DigitsKeyListener.getInstance(“123456xyz”);</span><br><span class="line">xml：android:digits=<span class="string">"@string/input_num_character"</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：本博客主要用于学习记录，欢迎共同学习交流。转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+ 
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2017/07/12/Android Studio/" class="pre-post btn btn-default" title='Android Studio 添加依赖报错'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Android Studio 添加依赖报错</span>
+        </a>
+    
+    
+        <a href="/2016/08/10/TableLayout/" class="next-post btn btn-default" title='设置TabLayout下划线的宽度'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">设置TabLayout下划线的宽度</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id: window.location.pathname,
+        id:'{{page.title}}',
+        owner:"zql1010",
+        repo:"zql1010.github.io",
+        oauth: {
+          client_id:"",
+          client_secret:""
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
+
+    </div>
+
+
 
 
 
                 </main>
                 
-                    
-    <aside class="col-md-4 sidebar">
-        
-        
+                    <aside id="article-toc" role="navigation" class="col-md-4">
     <div class="widget">
-        <h3 class="title">Search</h3>
-        <div id="search-form">
-            <div id="result-mask" class="hide"></div>
-            <div class="search-area">
-                
-                    <input id="search-key" type="search" autocomplete="off" placeholder="search">
-                    <button type="button" class="search-form-submit" id="search-local">localSearch</button>
-                
-                
-            </div>
-            <div id="result-wrap" class="hide">
-                <div id="search-result"></div>
-            </div>
-            <div class="hide">
-                <template id="search-tpl">
-                    <div class="item">
-                        <a href="/{path}" title="{title}">
-                            <div class="title">{title}</div>
-                            <div class="content">{content}</div>
-                        </a>
-                    </div>
-                </template>
-            </div>
-        </div>
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
     </div>
-
-        
-        
-        
-        
-    <div class="widget">
-      <h3 class="title">Social</h3> 
-        <div class="content social">
-            
-	            <a href="https://github.com/zql1010" rel="external nofollow" title="Github" target="_blank">
-			    	<i class="git fa fa-git"></i>
-			    </a>
-            
-	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
-			    	<i class="feed fa fa-feed"></i>
-			    </a>
-            
-        </div>
-    </div>
-
-
-        
-        
-    <div class="widget">
-        <h3 class="title">Categories</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/"><i class="fa" aria-hidden="true">Android</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/"><i class="fa" aria-hidden="true">Java</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/"><i class="fa" aria-hidden="true">Test</i></a><span class="category-list-count">1</span></li></ul>
-    </div>
-
-
-        
-        
-    <div class="widget">
-      <h3 class="title">Archives</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">2018年07月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/"><i class="fa" aria-hidden="true">2017年07月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">2017年06月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/"><i class="fa" aria-hidden="true">2016年08月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">2016年07月</i></a><span class="archive-list-count">1</span></li></ul>
-    </div>
-
-
-        
-        
-  <div class="widget">
-    <h3 class="title">Tag Cloud</h3>
-    <div class="content tag-cloud">
-        <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/EditText/" style="font-size: 10px;">EditText</a> <a href="/tags/TabLayout/" style="font-size: 10px;">TabLayout</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a>
-    </div>
-  </div>
-
-
-        
-        
-    <div class="widget">
-        <h3 class="title">Friends</h3>
-        <div class="content friends-link">
-        
-            <a href="http://student9128.top" class="fa" target="_blank">Student</a>
-        
-            <a href="https://blog.csdn.net/c10WTiybQ1Ye3/article/list/" class="fa" target="_blank">郭霖</a>
-        
-            <a href="https://blog.csdn.net/lmj623565791/" class="fa" target="_blank">鸿洋</a>
-        
-            <a href="https://blog.csdn.net/singwhatiwanna/" class="fa" target="_blank">任玉刚</a>
-        
-            <a href="https://www.liaoxuefeng.com/" class="fa" target="_blank">廖雪峰</a>
-        
-        </div>
-    </div>
-
-
-        
-    </aside>
+</aside>
 
                 
             </div>
