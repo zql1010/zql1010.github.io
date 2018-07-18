@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Android EditText输入的一些限制 | Zql的博客</title>
+<title>强制隐藏软键盘 | Zql的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Zql的博客" type="application/atom+xml">
@@ -129,9 +129,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Android EditText输入的一些限制">
+        <h1 id="强制隐藏软键盘">
             
-	            Android EditText输入的一些限制
+	            强制隐藏软键盘
             
         </h1>
         <div class="post-meta">
@@ -150,8 +150,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/EditText" title='EditText'>
-                        EditText
+                    <a href="/tags/软键盘" title='软键盘'>
+                        软键盘
                     </a>
                 
             
@@ -163,7 +163,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2017/06/17</span>
+            <span class="date-meta">2017/04/10</span>
         </span>
         <span id="busuanzi_container_page_pv">
             <i class="fa fa-eye"></i>
@@ -177,12 +177,15 @@
     </div>
     
     <div class="post-body post-content">
-        <p>限制输入类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">et_lxnr.setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE);</span><br><span class="line">xml：android:inputType=<span class="string">"number"</span></span><br></pre></td></tr></table></figure>
-<p>限制输入长度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">et_lxnr.setFilters(new InputFilter[]&#123;new InputFilter.LengthFilter(10)&#125;);</span><br><span class="line">xml：android:maxLength=<span class="string">"10"</span></span><br></pre></td></tr></table></figure>
-<p>限制输入固定的某些字符</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">et_lxnr.setKeyListener(DigitsKeyListener.getInstance(“123456xyz”);</span><br><span class="line">xml：android:digits=<span class="string">"@string/input_num_character"</span></span><br></pre></td></tr></table></figure>
+        <p> <strong>开发中遇到的有些场景需要去判断软键盘是否显示去决定显示还是隐藏，下面提供一种强制隐藏软件盘的方式</strong></p>
+<hr>
+<p><strong>首先在BaseActivity中重写dispatchTouchEvent（）方法</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean dispatchTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">    <span class="keyword">if</span> (ev.getAction() == MotionEvent.ACTION_DOWN) &#123;</span><br><span class="line">        View v = getCurrentFocus();</span><br><span class="line">        <span class="keyword">if</span> (isShouldHideInput(v, ev)) &#123;</span><br><span class="line">            hideSoftInput(v.getWindowToken());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> super.dispatchTouchEvent(ev);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="isShouldHideInput（）方法"><a href="#isShouldHideInput（）方法" class="headerlink" title="  isShouldHideInput（）方法"></a>  <strong>isShouldHideInput（）方法</strong></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">private boolean isShouldHideInput(View v, MotionEvent event) &#123;</span><br><span class="line">     <span class="keyword">if</span> (v != null &amp;&amp; (v instanceof EditText)) &#123;</span><br><span class="line">         int[] l = &#123;0, 0&#125;;</span><br><span class="line">         v.getLocationInWindow(l);</span><br><span class="line">         int left = l[0], top = l[1], bottom = top + v.getHeight(), right = left</span><br><span class="line">                 + v.getWidth();</span><br><span class="line">         <span class="keyword">if</span> (event.getX() &gt; left &amp;&amp; event.getX() &lt; right</span><br><span class="line">                 &amp;&amp; event.getY() &gt; top &amp;&amp; event.getY() &lt; bottom) &#123;</span><br><span class="line"></span><br><span class="line">             <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">             <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="hideSoftInput（）方法"><a href="#hideSoftInput（）方法" class="headerlink" title=" hideSoftInput（）方法"></a> <strong>hideSoftInput（）方法</strong></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void hideSoftInput(IBinder token) &#123;</span><br><span class="line">      <span class="keyword">if</span> (token != null) &#123;</span><br><span class="line">          InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);</span><br><span class="line">          im.hideSoftInputFromWindow(token,</span><br><span class="line">                  InputMethodManager.HIDE_NOT_ALWAYS);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     <div class="post-footer">
@@ -200,15 +203,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2017/07/12/Android Studio/" class="pre-post btn btn-default" title='Android Studio 添加依赖报错'>
+        <a href="/2017/06/17/EditText/" class="pre-post btn btn-default" title='Android EditText输入的一些限制'>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">Android Studio 添加依赖报错</span>
+            <span class="hidden-xs">Android EditText输入的一些限制</span>
         </a>
     
     
-        <a href="/2017/04/10/强制隐藏软件盘/" class="next-post btn btn-default" title='强制隐藏软键盘'>
+        <a href="/2016/08/10/TableLayout/" class="next-post btn btn-default" title='设置TabLayout下划线的宽度'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">强制隐藏软键盘</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">设置TabLayout下划线的宽度</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -244,7 +247,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#isShouldHideInput（）方法"><span class="toc-text">  isShouldHideInput（）方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hideSoftInput（）方法"><span class="toc-text"> hideSoftInput（）方法</span></a></li></ol>
         
     </div>
 </aside>
