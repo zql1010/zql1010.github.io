@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Zql的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>Java的四种模式的实现 | Zql的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Zql的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://seopic.699pic.com/photo/50037/5519.jpg_wh1200.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='QL Zhang'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> Never Give Up </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">Zql的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Android/"><i class="fa "></i>Android</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Java/"><i class="fa "></i>Java</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java的四种模式的实现">
+            
+	            Java的四种模式的实现
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/Java">
+            Java
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/单例" title='单例'>
+                        单例
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2016/04/10</span>
+        </span>
+        <span id="busuanzi_container_page_pv">
+            <i class="fa fa-eye"></i>
+            <span id="busuanzi_value_page_pv"></span>
+          </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p> <strong>总结了四种Java单例模式的写法</strong></p>
+<hr>
+<p> <strong>1.饿汉式</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">　　public class DownLoad&#123;</span><br><span class="line"></span><br><span class="line">　　private static final DownLoad mDownload =new DownLoad();</span><br><span class="line"></span><br><span class="line">　　  private <span class="function"><span class="title">download</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">　　 &#125;</span><br><span class="line"></span><br><span class="line">　　public static DownLoad <span class="function"><span class="title">getInstance</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">　　  <span class="built_in">return</span> mDownload ;</span><br><span class="line"></span><br><span class="line">　　 &#125;</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-懒汉式"><a href="#2-懒汉式" class="headerlink" title="  2.懒汉式"></a>  <strong>2.懒汉式</strong></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">　 public class DownLoad&#123;</span><br><span class="line"></span><br><span class="line">　　private static final DownLoad mDownload ;</span><br><span class="line"></span><br><span class="line">　　  private <span class="function"><span class="title">download</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">　　 &#125;</span><br><span class="line"></span><br><span class="line">　　public static DownLoad <span class="function"><span class="title">getInstance</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">　　　<span class="keyword">if</span>(mDownload ==null)&#123;</span><br><span class="line"></span><br><span class="line">　　　　mDownload =new DownLoad();</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　   <span class="built_in">return</span> mDownload ;</span><br><span class="line"></span><br><span class="line">　　 &#125;</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-double-check（会出现空指针问题，可通过添加volatile关键字解决）"><a href="#3-double-check（会出现空指针问题，可通过添加volatile关键字解决）" class="headerlink" title=" 3.double check（会出现空指针问题，可通过添加volatile关键字解决）"></a> <strong>3.double check（会出现空指针问题，可通过添加volatile关键字解决）</strong></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">　 public class DownLoad&#123;</span><br><span class="line"></span><br><span class="line">　　private static volatile DownLoad mDownload ;</span><br><span class="line"></span><br><span class="line">　　private <span class="function"><span class="title">download</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　public static DownLoad <span class="function"><span class="title">getInstance</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">　　　<span class="keyword">if</span>(mDownload ==null)&#123;</span><br><span class="line"></span><br><span class="line">　　　synchronized(DownLoad.class)&#123;</span><br><span class="line"></span><br><span class="line">　　　　<span class="keyword">if</span>(mDownload )&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　mDownload =new DownLoad();</span><br><span class="line"></span><br><span class="line">　　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　　&#125;</span><br><span class="line"></span><br><span class="line">　　<span class="built_in">return</span> mDownload ;</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="4-静态内部类"><a href="#4-静态内部类" class="headerlink" title=" 4.静态内部类"></a> <strong>4.静态内部类</strong></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">　　public class DownLoad&#123;</span><br><span class="line"></span><br><span class="line">　　　public static class&#123;</span><br><span class="line"></span><br><span class="line">　　　private static DownLoad mDownload=new DownLoad();</span><br><span class="line"></span><br><span class="line">　　　public static DownLoad <span class="function"><span class="title">getInstance</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">　　　　　<span class="built_in">return</span> mDownload;</span><br><span class="line"></span><br><span class="line">　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：本博客主要用于学习记录，欢迎共同学习交流。转载请注明出处！
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+ 
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2016/07/12/正则/" class="pre-post btn btn-default" title='最全的手机号、邮箱正则表达式（java）'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">最全的手机号、邮箱正则表达式（java）</span>
+        </a>
+    
+    
+</div>
+
+
+    <div id="comments">
+        
+	<script type="text/javascript" src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id: window.location.pathname,
+        id:'{{page.title}}',
+        owner:"zql1010",
+        repo:"zql1010.github.io",
+        oauth: {
+          client_id:"",
+          client_secret:""
+        },
+        perPage:"10",
+    });
+    gitment.render('comments');
+</script>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-懒汉式"><span class="toc-text">  2.懒汉式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-double-check（会出现空指针问题，可通过添加volatile关键字解决）"><span class="toc-text"> 3.double check（会出现空指针问题，可通过添加volatile关键字解决）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-静态内部类"><span class="toc-text"> 4.静态内部类</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+    
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2016-2018 zql
+                </span> |
+                <!-- <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | -->
+                <span>
+                    Theme by Zql based on <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+
+              <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+              第<span id="busuanzi_value_site_uv"></span>位小伙伴你好,
+              <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
